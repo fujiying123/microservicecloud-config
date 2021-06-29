@@ -1,0 +1,71 @@
+spring:
+  profiles:
+    active:
+      -dev
+---
+server:
+  port: 8001
+spring:
+  profiles: dev #开发环境
+  application:
+    name: microservicecloud-config-dept-client
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://192.168.74.130:3306/cloudDB01?serverTimezone=GMT%2B8&characterEncoding=utf8&useUnicode=true&useSSL=false&allowPublicKeyRetrieval=true
+    username: root
+    password: dahuacloud
+    type: com.alibaba.druid.pool.DruidDataSource
+    dbcp2:
+      min-idle: 5
+      initial-size: 5
+      max-total: 5
+      max-wait-millis: 200
+
+eureka:
+  client:
+    service-url:
+      #      defaultZone: http://localhost:7001/eureka
+      defaultZone: http://eureka7001.com:7001/eureka
+  instance:
+    instance-id: microserviceprovider-dept8081
+    prefer-ip-address: true #访问路径可以显示ip地址
+
+mybatis:
+  config-location: classpath:mybatis/mybatis.cfg.xml
+  type-aliases-package: com/atguigu/springcloud/entities
+  mapper-locations: classpath*:/mapper/*.xml,classpath:mybatis/mapper/*xml
+
+
+
+---
+server:
+  port: 8001
+spring:
+  profiles: test #开发环境
+  application:
+    name: microservicecloud-config-dept-client
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://192.168.74.130:3306/cloudDB01?serverTimezone=GMT%2B8&characterEncoding=utf8&useUnicode=true&useSSL=false&allowPublicKeyRetrieval=true
+    username: root
+    password: dahuacloud
+    type: com.alibaba.druid.pool.DruidDataSource
+    dbcp2:
+      min-idle: 5
+      initial-size: 5
+      max-total: 5
+      max-wait-millis: 200
+
+eureka:
+  client:
+    service-url:
+      #      defaultZone: http://localhost:7001/eureka
+      defaultZone: http://eureka7001.com:7001/eureka
+  instance:
+    instance-id: microserviceprovider-dept8081
+    prefer-ip-address: true #访问路径可以显示ip地址
+
+mybatis:
+  config-location: classpath:mybatis/mybatis.cfg.xml
+  type-aliases-package: com/atguigu/springcloud/entities
+  mapper-locations: classpath*:/mapper/*.xml,classpath:mybatis/mapper/*xml
